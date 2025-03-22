@@ -50,7 +50,12 @@ def add_product():
 
     products.append(product2)
 
-6
+def sum_product():
+    total = 0
+    for product in products:
+        total += product['price']
+
+    print(f"Celková částka všech produktů je {total}Kč")
 
 def menu():
     print("Vítej ve skladu")
@@ -84,6 +89,11 @@ def menu():
     elif choice == 3:
         print("Přidání položky:")
         add_product()
+        print("")
+        menu()
+
+    elif choice == 4:
+        sum_product()
         print("")
         menu()
 
