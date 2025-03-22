@@ -57,6 +57,14 @@ def sum_product():
 
     print(f"Celková částka všech produktů je {total}Kč")
 
+def min_price():
+    min_product = products[0]
+
+    for product in products[1:]:
+
+        if product["price"] < min_product["price"]:
+            min_product = product
+
 def menu():
     print("Vítej ve skladu")
     print("------------------")
@@ -94,6 +102,14 @@ def menu():
 
     elif choice == 4:
         sum_product()
+        print("")
+        menu()
+
+    elif choice == 5:
+        print("Nejlevnější produkt je:")
+        min_price()
+        min_product = min_price()
+        print(f"Produkt s nejnižší cenou je {min_product['name']} za {min_product['price']} Kč.")
         print("")
         menu()
 
