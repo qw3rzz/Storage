@@ -65,6 +65,16 @@ def min_price():
         if product["price"] < min_product["price"]:
             min_product = product
 
+def max_price():
+    max_product = products[0]
+
+    for product in products[1:]:
+
+        if product["price"] > max_product["price"]:
+            max_product = product
+
+    return max_product
+
 def menu():
     print("Vítej ve skladu")
     print("------------------")
@@ -110,6 +120,14 @@ def menu():
         min_price()
         min_product = min_price()
         print(f"Produkt s nejnižší cenou je {min_product['name']} za {min_product['price']} Kč.")
+        print("")
+        menu()
+
+    elif choice == 6:
+        print("Nejdražší produkt je:")
+        max_price()
+        max_product = max_price()
+        print(f"Produkt s nejvyšší cenou je {max_product['name']} za {max_product['price']} Kč.")
         print("")
         menu()
 
