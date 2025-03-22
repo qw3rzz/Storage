@@ -92,6 +92,16 @@ def product_edit(products):
     products[choice]["name"] = new_name
     products[choice]["price"] = new_price
 
+def search_price(products, target_price):
+    found_products = [product for product in products if product["price"] == target_price]
+
+    if found_products:
+        print("\nNalezené produkty s cenou", target_price, "Kč:")
+        for product in found_products:
+            print(f"{product['name']} - {product['price']} Kč")
+    else:
+        print(f"Žádné produkty s cenou {target_price} Kč nebyly nalezeny.")
+
 def menu():
     print("Vítej ve skladu")
     print("------------------")
@@ -115,16 +125,16 @@ def menu():
         menu()
 
     elif choice == 2:
+        print("Přidání položky:")
+        add_product()
+        print("")
+        menu()
+
+    elif choice == 3:
         print("Vyhledej produkt podle názvu")
         user_prefix = input("Zadejte část názvu: ").strip().lower()
         found = search_product(user_prefix, products)
         search_print(found)
-        menu()
-
-    elif choice == 3:
-        print("Přidání položky:")
-        add_product()
-        print("")
         menu()
 
     elif choice == 4:
@@ -156,6 +166,12 @@ def menu():
     elif choice == 8:
         print("Úprava produktu:")
         product_edit(products)
+        menu()
+
+    elif choice == 9:
+        print("Nalezení produktu podle ceny:")
+        target_price = int(input("Zadej cenu produktu, který hledáš: "))
+        search_price(products, target_price)
         menu()
 
 menu()
